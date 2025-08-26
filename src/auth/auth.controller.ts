@@ -3,6 +3,7 @@ import { UsersService } from '../users/users.service';
 import { compareTheHashes } from 'src/utils/bcrypt';
 import { Throttle } from '@nestjs/throttler';
 import { ApiBadRequestResponse, ApiCreatedResponse, ApiForbiddenResponse, ApiOperation } from '@nestjs/swagger';
+import { login } from './dto/login.dto';
 
 
 @Controller('login')
@@ -15,11 +16,11 @@ export class authController {
   @ApiBadRequestResponse({ description : 'the password does not match the username'})
   @Throttle({default:{ ttl : 20000 , limit : 5}})
   @Post('')
-  async login(@Body() body: { username: string; password: string }) {
-    const user = await this.userService.findByUsername(body.username);
+  async login(@Body() loignDTO : login) {
+    const user = await this.userService.findByUsername(loignDTO.username);
     if (!user) throw new HttpException('user did not found',HttpStatus.FORBIDDEN)
 
-    const valid = await compareTheHashes(body.password,user.password)
+    const valid = await compareTheHashes(loignDTO.password,user.password)
     if (!valid) throw new HttpException('the password does not match the username',HttpStatus.BAD_REQUEST)
 
     // Authentication موفق بود، می‌تونی اطلاعات کاربر رو برگردونی

@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import { Genre, Language } from "../entities/book.entity";
 import { ApiProperty } from "@nestjs/swagger";
 
@@ -31,12 +31,14 @@ export class CreateBookDto {
 
     @ApiProperty({enum: Language , example : Language.English , required : false  , default : Language.Persian})
     @IsOptional()
-    language : Language = Language.Persian
+    @IsEnum(Language)
+    language? : Language = Language.Persian
     
-    @ApiProperty({enum: Genre , example :Genre.Fantasy})
+    @ApiProperty({enum: Genre , example :Genre.Fantasy })
     @IsNotEmpty()
+    @IsEnum(Genre)
     @IsOptional()
-    genre : Genre
+    genre? : Genre
 
 
 }

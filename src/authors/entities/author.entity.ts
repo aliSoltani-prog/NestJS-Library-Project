@@ -18,4 +18,9 @@ export class Author {
   @OneToMany(() => Book, (book) => book.author)
   books: Book[]; // ✅ آرایه از کتاب‌ها
 
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

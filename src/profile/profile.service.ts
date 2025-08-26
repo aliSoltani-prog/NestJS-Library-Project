@@ -14,6 +14,8 @@ import { Profile } from './entities/profile.entity';
 export class ProfileService {
   constructor(@InjectRepository(User) private userrepo:Repository<User> , 
               @InjectRepository(Profile) private profilerepo:Repository<Profile>){}
+
+
   async create(id : number , createProfileBackup: CreateProfileBackup) {
     const IsExist  = await this.userrepo.findOneBy({id})
     if (!IsExist){
@@ -33,10 +35,21 @@ export class ProfileService {
   //  return `This action returns a #${id} profile`;
   //}
 //
-  //update(id: number, updateProfileDto: UpdateProfileDto) {
-  //  return `This action updates a #${id} profile`;
-  //}
-//
+  async update(id: number, P_id : number ,updateProfileDto: UpdateProfileDto ) {
+    const IsUserExist = await this.userrepo.findOneBy({ id }) 
+    if (!IsUserExist){
+      throw new HttpException('passing invalid key to find user', HttpStatus.FORBIDDEN)
+    }
+
+    const IsProfileExist =  await this.profilerepo.findOneBy({ id })
+    if (!IsProfileExist){
+      throw new HttpException('this user does not have any profile', HttpStatus.FORBIDDEN)
+    }
+
+    const updateProfile = this.profilerepo.update( {id} , {...updateProfileDto , updatedAt:new Date})
+    return updateProfile;
+  }
+
   //remove(id: number) {
   //  return `This action removes a #${id} profile`;
   //}

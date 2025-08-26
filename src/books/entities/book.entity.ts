@@ -21,6 +21,7 @@ export enum Genre{
 
 @Entity()
 export class Book {
+
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -40,6 +41,7 @@ export class Book {
   @Column()
   edition: number;
 
+
   @Column()
   publisher: string;
 
@@ -50,14 +52,17 @@ export class Book {
   })
   language: Language;
 
+
   @Column({
     type: 'enum',
     enum: Genre
   })
   genre: Genre;
 
+
   @CreateDateColumn()
   createdAt: Date;
+
 
   @UpdateDateColumn()
   updatedAt: Date;

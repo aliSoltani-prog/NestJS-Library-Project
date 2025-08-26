@@ -20,5 +20,4 @@ export class CreateAuthorDto {
     @IsString()
     nationality : string
 
-    
 }

@@ -5,9 +5,10 @@ import { CreateBookLoggerMiddleware, DeleteBookLoggerMiddleware, FetchAllBooksLo
 import { Book } from './entities/book.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { Author } from 'src/authors/entities/author.entity';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([Book]) , ThrottlerModule.forRoot({
+  imports:[TypeOrmModule.forFeature([Book , Author]) , ThrottlerModule.forRoot({
     throttlers:[{
       ttl : 5000 , 
       limit : 2

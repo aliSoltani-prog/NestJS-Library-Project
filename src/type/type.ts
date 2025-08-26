@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsDate, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import { Genre, Language } from "../books/entities/book.entity";
 import { ApiProperty } from "@nestjs/swagger";
 
@@ -34,9 +34,8 @@ export class GetAllBooksDto {
     @ApiProperty({enum: Language , example : Language.English , required : false  , default : Language.Persian})
     @IsOptional()
     language : Language = Language.Persian
-    
-    @ApiProperty({enum: Genre , example :Genre.Fantasy})
-    @IsNotEmpty()
+
+    @ApiProperty({enum: Genre , example :Genre.Fantasy , required: false })
     @IsOptional()
     genre : Genre
 
@@ -175,4 +174,64 @@ export class GetOneBookByTitleDto {
     profile: CreateProfileDto;
 
 }
+export class GetAllAuthorDto {
 
+    @ApiProperty({example : "cris"})
+    @IsNotEmpty()
+    @IsString()
+    name : string
+
+    @ApiProperty({example : '1977-01-15'})
+    @IsNotEmpty()
+    @Type(() => Date) // تبدیل مقدار ورودی به Date
+    @IsDate()
+    dateOfBirth : Date
+
+    @ApiProperty({example : 'example nationality' , required : false})
+    @IsOptional()
+    @IsString()
+    nationality : string
+
+    
+}
+
+export class GetOneAuthorDto {
+
+    @ApiProperty({example : "cris"})
+    @IsNotEmpty()
+    @IsString()
+    name : string
+
+    @ApiProperty({example : '1977-01-15'})
+    @IsNotEmpty()
+    @Type(() => Date) // تبدیل مقدار ورودی به Date
+    @IsDate()
+    dateOfBirth : Date
+
+    @ApiProperty({example : 'example nationality' , required : false})
+    @IsOptional()
+    @IsString()
+    nationality : string
+
+    
+}
+export class GetOneAuthorByNameDto {
+
+    @ApiProperty({example : "cris"})
+    @IsNotEmpty()
+    @IsString()
+    name : string
+
+    @ApiProperty({example : '1977-01-15'})
+    @IsNotEmpty()
+    @Type(() => Date) // تبدیل مقدار ورودی به Date
+    @IsDate()
+    dateOfBirth : Date
+
+    @ApiProperty({example : 'example nationality' , required : false})
+    @IsOptional()
+    @IsString()
+    nationality : string
+
+    
+}

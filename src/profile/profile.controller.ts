@@ -34,11 +34,16 @@ export class ProfileController {
   //  return this.profileService.findOne(+id);
   //}
 //
-  //@Patch(':id')
-  //update(@Param('id') id: string, @Body() updateProfileDto: UpdateProfileDto) {
-  //  return this.profileService.update(+id, updateProfileDto);
-  //}
-//
+  @ApiOperation({ summary : 'Editing a profile based on user ID and Profile ID'})
+  @ApiOkResponse({description : 'profile Updated' , type : UpdateProfileDto})
+  @ApiForbiddenResponse({description :' the user or profile did not found or the data is invalid'})
+  @RequireRoles(Roles.Admin , Roles.User)
+  @Throttle({default:{ ttl : 20000 , limit : 5}})
+  @Patch(':id/profile/:id')
+  update(@Param('id' , ParseIntPipe) id: number,@Param('id', ParseIntPipe) P_id  : number, @Body() updateProfileDto: UpdateProfileDto ) {
+   return this.profileService.update(id , P_id , updateProfileDto );
+  }
+
   //@Delete(':id')
   //remove(@Param('id') id: string) {
   //  return this.profileService.remove(+id);

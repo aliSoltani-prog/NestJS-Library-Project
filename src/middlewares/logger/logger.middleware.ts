@@ -15,7 +15,6 @@ export class UpdateBookLoggerMiddleware implements NestMiddleware {
     next();
   }
 }
-
 @Injectable()
 export class DeleteBookLoggerMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
@@ -39,13 +38,13 @@ export class GetBookByIDLoggerMiddleware implements NestMiddleware {
     next();
   }
 }
-@Injectable()
-export class SendAnAuthorLoggerMiddleware implements NestMiddleware {
-  use(req: Request, res: Response, next: NextFunction) {
-    console.log('Assign An Author into a Book Information')
-    next();
-  }
-}
+// @Injectable()
+// export class SendAnAuthorLoggerMiddleware implements NestMiddleware {
+//   use(req: Request, res: Response, next: NextFunction) {
+//     console.log('Assign An Author into a Book Information')
+//     next();
+//   }
+// }
 @Injectable()
 export class CreateUserLoggerMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
@@ -92,6 +91,83 @@ export class loginLoggerMiddleware implements NestMiddleware {
 export class searchForaBookLoggerMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     console.log('Searching for a book')
+    next();
+  }
+}
+// @Injectable()
+// export class filteringbyGLoggerMiddleware implements NestMiddleware {
+//   use(req: Request, res: Response, next: NextFunction) {
+//     console.log('filtering the books using genre')
+//     next();
+//   }
+// }
+// @Injectable()
+// export class filteringbyLLoggerMiddleware implements NestMiddleware {
+//   use(req: Request, res: Response, next: NextFunction) {
+//     console.log('filtering the books using language')
+//     next();
+//   }
+// }
+@Injectable()
+export class CreateAnAuthorLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log('Createing An Author')
+    next();
+  }
+}
+@Injectable()
+export class EditAnAuthorLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log('Editing An Author using ID')
+    next();
+  }
+}
+@Injectable()
+export class DeleteAuthorLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log('Deleting An Author using ID')
+    next();
+  }
+}
+@Injectable()
+export class FetchAllAuthorsLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log('Fetching All authors')
+    next();
+  }
+}
+@Injectable()
+export class SearchForOneAuthorByIDLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log('Search for one author Using ID')
+    next();
+  }
+}
+@Injectable()
+export class SearchForOneAuthorByNameLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log('Search for one author Using Name of the Author')
+    next();
+  }
+}
+@Injectable()
+export class AssignAuthorToBookLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log('Search for one author Using Name of the Author')
+    next();
+  }
+}
+@Injectable()
+export class EditProfileLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log("Editing a user's Profile")
+    next();
+  }
+}
+@Injectable()
+export class CreateProfileLoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log("Create a user's Profile")
     next();
   }
 }

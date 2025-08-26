@@ -8,7 +8,7 @@ export class CreateBookBackup{
     publisher : string
 }
 
-export class createAuthorBackup{
+export class CreateAuthorBackup{
     name : string
     dateOfBirth : Date
     nationality? : string

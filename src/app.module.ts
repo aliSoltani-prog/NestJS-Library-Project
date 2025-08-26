@@ -15,6 +15,8 @@ import { ProfileModule } from './profile/profile.module';
 import { Profile } from './profile/entities/profile.entity';
 
 
+
+
 @Module({
   imports: [BooksModule , TypeOrmModule.forRoot({
     type:'mysql',
@@ -24,7 +26,7 @@ import { Profile } from './profile/entities/profile.entity';
     password:'alisoltaniprog',
     database:'librarydb',
     entities:[Book , Author , User , Profile],  
-    synchronize:true
+    synchronize:false
   }), AuthorsModule , UsersModule, AuthModule, ProfileModule],
   controllers: [AppController],
   providers: [AppService , {provide : APP_GUARD
