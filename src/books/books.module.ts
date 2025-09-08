@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { Author } from 'src/authors/entities/author.entity';
 
+
 @Module({
   imports:[TypeOrmModule.forFeature([Book , Author]) , ThrottlerModule.forRoot({
     throttlers:[{

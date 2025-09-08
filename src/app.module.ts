@@ -13,6 +13,8 @@ import { User } from './users/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { Profile } from './profile/entities/profile.entity';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 
 
@@ -22,11 +24,11 @@ import { Profile } from './profile/entities/profile.entity';
     type:'mysql',
     port:3306,
     host:'localhost',
-    username:'aliBB',
-    password:'alisoltaniprog',
+    username:'aliSoltani',
+    password:'mysql',
     database:'librarydb',
     entities:[Book , Author , User , Profile],  
-    synchronize:false
+    synchronize:true
   }), AuthorsModule , UsersModule, AuthModule, ProfileModule],
   controllers: [AppController],
   providers: [AppService , {provide : APP_GUARD
